@@ -3,6 +3,7 @@
 
 from django import forms
 from django.forms.forms import BoundField
+from django.utils.translation import ugettext as _
 
 class HiddenBaseForm(forms.BaseForm):
     def as_hidden(self):
@@ -13,9 +14,9 @@ class HiddenBaseForm(forms.BaseForm):
         return u'\n'.join(output)
 
 class LocationForm(forms.Form):
-    place = forms.CharField()
+    place = forms.CharField(label=_("Place"))
 
 class CheckinForm(HiddenBaseForm, forms.Form):
-    place = forms.CharField()
-    latitude = forms.FloatField()
-    longitude = forms.FloatField()
+    place = forms.CharField(label=_("Place"))
+    latitude = forms.FloatField(label=_("Latitude"))
+    longitude = forms.FloatField(label=_("Longitude"))
